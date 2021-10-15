@@ -52,10 +52,11 @@ for team in listOfTeams:
     eventScoreAverage = 0
     
     for eventMatch in allMatchesResponseJson:
-      eventScoreAverage = eventScoreAverage + ((eventMatch['alliances']['blue']['score'] + eventMatch['alliances']['red']['score']) / 2 )
+      eventScoreAverage = eventScoreAverage + eventMatch['alliances']['red']['score']
+      eventScoreAverage = eventScoreAverage + eventMatch['alliances']['blue']['score']
     try:
       # Just in case of bad data and the response is empty, fail gracefully!
-      eventScoreAverage = eventScoreAverage / len(allMatchesResponseJson)
+      eventScoreAverage = eventScoreAverage / (len(allMatchesResponseJson) * 2)
     except Exception as err:
       print(f'{err} -- {team}_{event["event_code"]}')
       continue
