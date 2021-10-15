@@ -127,4 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore future config.ini updates
 config.ini
